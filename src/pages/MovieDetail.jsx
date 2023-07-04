@@ -1,9 +1,15 @@
 import { useLocation } from "react-router-dom";
 import styles from "../styles/MovieDetail.module.css";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+
 
 const MovieDetail = () => {
   const data = useLocation().state;
-  console.log(data);
+  const { movies } = useSelector((state) => state.MovieStore.movies)
+  const [myMovie, SetmyMovie] = useState(null);
+
+
   return (
     <div className={styles.detailContentWrapper}>
       <div className={styles.backgroundOverlay}>

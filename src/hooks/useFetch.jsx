@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
-
+import { updateMovieStore } from "./redux/MovieStore";
+import { useDispatch } from "react-redux";
 
 const useFetch = (url) => {
   const [movies, setMovies] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchDate = async () => {
@@ -15,6 +16,7 @@ const useFetch = (url) => {
         if (response.ok) {
           const data = await response.json();
           setMovies(data);
+          dispatch(updateMovieStore({ movies: data, isLoading: false }))
         } else {
           throw new Error("Error fetching data");
         }

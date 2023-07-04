@@ -4,6 +4,9 @@ import Navigation from "components/Navigation";
 import MovieDetail from "pages/MovieDetail";
 import Chat from "components/Chat"
 function App() {
+
+
+
   return (
     <Router>
       <Navigation />
